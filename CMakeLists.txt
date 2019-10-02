@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.0)
 project(vfx)
 add_subdirectory(../allolib al) # !!! locate where allolib is
 
+add_library(common STATIC common.cpp)
+set_target_properties(common PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
+target_link_libraries(common PUBLIC al)
+
 # list of apps, give `name` if example file is `name.cpp`
 set(apps
     ssao
@@ -18,5 +25,5 @@ foreach(app ${apps})
         RUNTIME_OUTPUT_DIRECTORY_DEBUG bin
         RUNTIME_OUTPUT_DIRECTORY_RELEASE bin
     )
-    target_link_libraries(${app} PRIVATE al)
+    target_link_libraries(${app} PRIVATE common)
 endforeach()

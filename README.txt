@@ -9,4 +9,4 @@
 2. left textures should intermediate steps, check them in the end of the onDraw function
 
 [FXAA]
-1. TODO
+1. Hit space in the app to turn antialiasing on and off
